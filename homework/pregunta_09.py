@@ -5,6 +5,10 @@ datos requeridos se encuentran en los archivos `tbl0.tsv`, `tbl1.tsv` y
 librerias de pandas para resolver las preguntas.
 """
 
+import pandas as pd
+
+PATH_1 = 'files/input/tbl0.tsv'
+
 
 def pregunta_09():
     """
@@ -23,3 +27,11 @@ def pregunta_09():
     39  39  E   5  1998-01-26  1998
 
     """
+    df = pd.read_csv(PATH_1, sep= '\t')
+
+    df['year'] = df['c3'].str.split('-', expand= True)[0]
+
+
+    return df['c3'].dtype
+
+print(pregunta_09())
